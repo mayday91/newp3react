@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react'
+// import React, { Component, Fragment } from 'react'
+import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -10,36 +11,36 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
-class App extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			user: null,
-			msgAlerts: [],
-		}
-	}
+const App = (props) => {
 
-	setUser = (user) => this.setState({ user })
+	// constructor(props) {
+	// 	super(props)
+	// 	this.state = {
+	// 		user: null,
+	// 		msgAlerts: [],
+	// 	}
+	// }
+  const [user, setUser] = useState(null)
+  const [msgAlerts, setMsgAlerts] = useState([])
+	// setUser = (user) => this.setState({ user })
 
-	clearUser = () => this.setState({ user: null })
+	// clearUser = () => this.setState({ user: null })
+  const clearUser = () => setUser(null)
 
-	deleteAlert = (id) => {
-		this.setState((state) => {
-			return { msgAlerts: state.msgAlerts.filter((msg) => msg.id !== id) }
+	const deleteAlert = (id) => {
+		setMsgAlerts((prevState) => {
+			return (prevState.filter((msg) => msg.id !== id) )
 		})
 	}
 
-	msgAlert = ({ heading, message, variant }) => {
+	const msgAlert = ({ heading, message, variant }) => {
 		const id = uuid()
-		this.setState((state) => {
-			return {
-				msgAlerts: [...state.msgAlerts, { heading, message, variant, id }],
-			}
+		setMsgAlerts((prevState) => {
+			return (
+				[{...prevState}, { heading, message, variant, id }]
+      )
 		})
 	}
-
-	render() {
-		const { msgAlerts, user } = this.state
 
 		return (
 			<Fragment>
@@ -51,44 +52,43 @@ class App extends Component {
 						variant={msgAlert.variant}
 						message={msgAlert.message}
 						id={msgAlert.id}
-						deleteAlert={this.deleteAlert}
+						deleteAlert={deleteAlert}
 					/>
 				))}
 				<Routes>
 					<Route
 						path='/sign-up'
 						element={
-							<SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+							<SignUp msgAlert={msgAlert} setUser={setUser} />
             }
 					/>
 					<Route
 						path='/sign-in'
 						element={
-							<SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+							<SignIn msgAlert={msgAlert} setUser={setUser} />
             }
 					/>
 					<Route
 						user={user}
 						path='/sign-out'
-						render={() => (
+						element={
 							<SignOut
-								msgAlert={this.msgAlert}
-								clearUser={this.clearUser}
+								msgAlert={msgAlert}
+								clearUser={clearUser}
 								user={user}
 							/>
-						)}
+						}
 					/>
 					<Route
 						user={user}
 						path='/change-password'
-						render={() => (
-							<ChangePassword msgAlert={this.msgAlert} user={user} />
-						)}
+						element={
+							<ChangePassword msgAlert={msgAlert} user={user} />
+						}
 					/>
 				</Routes>
 			</Fragment>
 		)
-	}
 }
 
 export default App

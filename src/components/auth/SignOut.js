@@ -1,13 +1,26 @@
-import { Component } from 'react'
-// import { withRouter } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { signOut } from '../../api/auth'
 import messages from '../shared/AutoDismissAlert/messages'
 
-class SignOut extends Component {
-	componentDidMount() {
-		const { msgAlert, history, clearUser, user } = this.props
+const SignOut = (props) => {
+	// componentDidMount() {
+	const { msgAlert, clearUser, user } = props
 
+    const navigate = useNavigate()
+	// 	signOut(user)
+	// 		.finally(() =>
+	// 			msgAlert({
+	// 				heading: 'Signed Out Successfully',
+	// 				message: messages.signOutSuccess,
+	// 				variant: 'success',
+	// 			})
+	// 		)
+	// 		.finally(() => history.push('/'))
+	// 		.finally(() => clearUser())
+	// }
+    useEffect(() => {
 		signOut(user)
 			.finally(() =>
 				msgAlert({
@@ -16,13 +29,11 @@ class SignOut extends Component {
 					variant: 'success',
 				})
 			)
-			.finally(() => history.push('/'))
+			.finally(() => navigate('/'))
 			.finally(() => clearUser())
-	}
+    }, [])
 
-	render() {
-		return ''
-	}
+	return ''
 }
 
 export default SignOut
