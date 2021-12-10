@@ -6,26 +6,23 @@ import { v4 as uuid } from 'uuid'
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
+import Home from './components/Home'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 
-const App = (props) => {
+const App = () => {
 
-	// constructor(props) {
-	// 	super(props)
-	// 	this.state = {
-	// 		user: null,
-	// 		msgAlerts: [],
-	// 	}
-	// }
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
-	// setUser = (user) => this.setState({ user })
 
-	// clearUser = () => this.setState({ user: null })
-  const clearUser = () => setUser(null)
+  console.log('user in app', user)
+  console.log('message alerts', msgAlerts)
+  const clearUser = () => {
+    console.log('clear user ran')
+    setUser(null)
+  }
 
 	const deleteAlert = (id) => {
 		setMsgAlerts((prevState) => {
@@ -35,9 +32,9 @@ const App = (props) => {
 
 	const msgAlert = ({ heading, message, variant }) => {
 		const id = uuid()
-		setMsgAlerts((prevState) => {
+		setMsgAlerts(() => {
 			return (
-				[{...prevState}, { heading, message, variant, id }]
+				[{ heading, message, variant, id }]
       )
 		})
 	}
@@ -45,6 +42,27 @@ const App = (props) => {
 		return (
 			<Fragment>
 				<Header user={user} />
+				<Routes>
+					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+					<Route
+						path='/sign-up'
+						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+					/>
+					<Route
+						path='/sign-in'
+						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+					/>
+          <Route
+            path='/sign-out'
+            element={
+              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+            }
+          />
+          <Route
+            path='/change-password'
+            element={<ChangePassword msgAlert={msgAlert} user={user} />}
+          />
+				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
 						key={msgAlert.id}
@@ -55,38 +73,6 @@ const App = (props) => {
 						deleteAlert={deleteAlert}
 					/>
 				))}
-				<Routes>
-					<Route
-						path='/sign-up'
-						element={
-							<SignUp msgAlert={msgAlert} setUser={setUser} />
-            }
-					/>
-					<Route
-						path='/sign-in'
-						element={
-							<SignIn msgAlert={msgAlert} setUser={setUser} />
-            }
-					/>
-					<Route
-						user={user}
-						path='/sign-out'
-						element={
-							<SignOut
-								msgAlert={msgAlert}
-								clearUser={clearUser}
-								user={user}
-							/>
-						}
-					/>
-					<Route
-						user={user}
-						path='/change-password'
-						element={
-							<ChangePassword msgAlert={msgAlert} user={user} />
-						}
-					/>
-				</Routes>
 			</Fragment>
 		)
 }

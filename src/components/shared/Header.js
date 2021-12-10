@@ -1,30 +1,54 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-
+import { Link } from 'react-router-dom'
+const linkStyle = {
+    color: 'white',
+    textDecoration: 'none'
+}
 const authenticatedOptions = (
-	<Fragment>
-		<Nav.Link href='change-password'>Change Password</Nav.Link>
-		<Nav.Link href='sign-out'>Sign Out</Nav.Link>
-	</Fragment>
+	<>
+		<Nav.Link>
+			<Link to='change-password' style={linkStyle}>
+				Change Password
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='sign-out' style={linkStyle}>
+				Sign Out
+			</Link>
+		</Nav.Link>
+	</>
 )
 
 const unauthenticatedOptions = (
-	<Fragment>
-		<Nav.Link href='sign-up'>Sign Up</Nav.Link>
-		<Nav.Link href='sign-in'>Sign In</Nav.Link>
-	</Fragment>
+	<>
+        <Nav.Link>
+		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
+        </Nav.Link>
+        <Nav.Link>
+		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
+        </Nav.Link>
+	</>
 )
 
 const alwaysOptions = (
-	<Fragment>
-		<Nav.Link href='/'>Home</Nav.Link>
-	</Fragment>
+	<>
+		<Nav.Link>
+			<Link to='/' style={linkStyle}>
+				Home
+			</Link>
+		</Nav.Link>
+	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand href='/'>react-auth-template</Navbar.Brand>
+		<Navbar.Brand>
+            <Link to='/' style={linkStyle}>
+                react-auth-template
+            </Link>
+        </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
