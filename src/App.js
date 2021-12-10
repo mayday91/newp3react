@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid'
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/shared/Header'
+import RequireAuth from './components/shared/RequireAuth'
 import Home from './components/Home'
 import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
@@ -55,12 +56,17 @@ const App = () => {
           <Route
             path='/sign-out'
             element={
-              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+              <RequireAuth user={user}>
+                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+              </RequireAuth>
             }
           />
           <Route
             path='/change-password'
-            element={<ChangePassword msgAlert={msgAlert} user={user} />}
+            element={
+              <RequireAuth user={user}>
+                <ChangePassword msgAlert={msgAlert} user={user} />
+              </RequireAuth>}
           />
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
