@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	production: 'https://aqueous-atoll-85096.herokuapp.com',
+	production: '<replace_with_deployed_api_url>',
 	development: 'http://localhost:8000',
 }
 
