@@ -3,8 +3,8 @@
 # react-auth-boilerplate
 
 A front-end framework template for starting projects with a recent version of
-either the [Django API Template]()
-or the [Express API Template]().
+either the [Django API Boilerplate](https://github.com/WDI-SEA/django-auth-boilerplate)
+or the [Express API Template](https://github.com/WDI-SEA/express-auth-template).
 
 ## Installation
 
