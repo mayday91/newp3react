@@ -4,7 +4,7 @@
 
 A front-end framework template for starting projects with a recent version of
 either the [Django API Boilerplate](https://github.com/WDI-SEA/django-auth-boilerplate)
-or the [Express API Template](https://github.com/WDI-SEA/express-auth-template).
+or the [Express API Template](https://git.generalassemb.ly/sei-ec-remote/mongoose-express-auth-API-boilerplate).
 
 ## Installation
 
