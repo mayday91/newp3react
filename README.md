@@ -35,6 +35,7 @@ Refer to react deployment documentation for more info.
 
 This template is derived from `create-react-app` and has minimal additional dependencies. The main additions are:
 ```json
+"axios": "^0.24.0",
 "react-bootstrap": "^2.0.3",
 "react-router-dom": "^6.0.2",
 "sass": "^1.44.0",
