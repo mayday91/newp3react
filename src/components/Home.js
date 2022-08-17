@@ -1,10 +1,13 @@
+import ReviewsIndex from './reviews/ReviewsIndex'
+
 const Home = (props) => {
 	// const { msgAlert, user } = props
 	console.log('props in home', props)
 
+	const { msgAlert } = props
 	return (
 		<>
-			<h2>Home Page</h2>
+			<ReviewsIndex msgAlert={ msgAlert }/>
 		</>
 	)
 }

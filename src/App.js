@@ -2,6 +2,8 @@
 import React, { useState, Fragment } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import ShowReview from './components/reviews/ReviewsShow'
+import CreateReview from './components/reviews/CreateReview'
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
@@ -68,6 +70,20 @@ const App = () => {
                 <ChangePassword msgAlert={msgAlert} user={user} />
               </RequireAuth>}
           />
+					<Route 
+					path='/reviews/:id'
+					element={ 
+					<ShowReview user={ user } msgAlert={ msgAlert }/> 
+					}
+				/>
+					<Route
+					path='/addReview'
+					element={ 
+						<RequireAuth user={user}>
+							<CreateReview msgAlert={ msgAlert } user={user} />
+						</RequireAuth>
+					}
+				/>
 				</Routes>
 				{msgAlerts.map((msgAlert) => (
 					<AutoDismissAlert
