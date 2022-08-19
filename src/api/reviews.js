@@ -34,7 +34,7 @@ export const updateReview = (user, updatedReview) => {
 			Authorization: `Token token=${user.token}`,
 		},
 		data: {
-			pet: updatedReview,
+			review: updatedReview,
 		},
 	})
 }

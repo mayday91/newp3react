@@ -20,15 +20,19 @@ const CreateReview = (props) => {
   const handleChange = (e) => {
     setReview(prevReview => {
       let updatedValue = e.target.value
-      let updatedTitle = e.target.title
+      // let updatedTitle = e.target.title
       const updatedName = e.target.name
 
       console.log('this is the input type', e.target.type)
 
-
+      if(e.target.type === 'number'){
+        // this is looking at input type and changing it from default, which is a string, into an actual number
+        updatedValue = parseInt(e.target.value)
+      }
+      
       const updatedReview = {
         [updatedName]: updatedValue,
-        [updatedTitle]: updatedValue
+        // [updatedTitle]: updatedValue
       }
       return {
         ...prevReview,
@@ -43,7 +47,7 @@ const CreateReview = (props) => {
     createReview(user, review)
     // if we're successful, navigate to show page for new pet
     // send success message to user
-      .then(res => {navigate(`/reviews/${res.data.review.id}`)})
+      .then(navigate(`/`))
       .then(() => {
         msgAlert({
           heading: 'Oh Yeah!',

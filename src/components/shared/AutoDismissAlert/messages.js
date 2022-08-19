@@ -10,7 +10,7 @@ const messages = {
 	createReviewSuccess:'Review Created Successfully!',
 	createReviewFailure:'Something went wrong! Please try again.',
 	updateReviewSuccess:'Review updated successfully!',
-	updateReviewFailure:'Something went wrong! Please try again!',
+	updateReviewFailure:'Something went wrong! THIS SHIT SUCKS Please try again!',
 	removeReviewSuccess:'Review deleted!',
 	removeReviewFailure:'Could not delete Review! Please try again!'
 }

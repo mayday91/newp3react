@@ -43,20 +43,14 @@ const ShowReview = (props) => {
     useEffect(() => {
         getOneReview(id)
             .then(res => setReview(res.data.review))
-            .catch(err => {                   
-                msgAlert({
-                    heading: 'Error getting review',
-                    message: messages.getReviewsFailure,
-                    variant: 'danger'
-                })
-                navigate('/')
-                //navigate back to the home page if there's an error fetching
-            })
-    }, [updated])
+            .catch(err => console.log(err))
+    }, [updated, id])
 
     
     const removeTheReview = () => {
-        removeReview(user, review.id)
+        console.log('in removeTheReview', review)
+        console.log('is this the id I need?', id)
+        removeReview(user, review._id)
             // on success send a success message
             .then(() => {
                 msgAlert({
@@ -98,7 +92,7 @@ const ShowReview = (props) => {
         <>
             <Container className="fluid">
                 <Card>
-                    <Card.Header>{ review.title }</Card.Header>
+                    <Card.Header>{ review.title } by { review.artist }</Card.Header>
                     <Card.Body>
                         <Card.Text>
                             <div><small>{ review.body }</small></div>
@@ -111,7 +105,7 @@ const ShowReview = (props) => {
                             Leave a comment on {review.title} !
                         </Button>
                         {
-                            review.owner && user && review.owner._id === user._id 
+                            review.owner && user && review.owner._id === user.id 
                             ?
                             <>
                                 <Button onClick={() => setEditModalShow(true)} 

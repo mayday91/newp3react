@@ -18,8 +18,8 @@ const cardContainerStyle = {
 const ReviewsIndex = (props) => {
   const [reviews, setReviews] = useState(null)
   const [error, setError] = useState(false)
-
   const { msgAlert } = props
+  
 useEffect(() => {
   getAllReviews()
     .then(res => setReviews(res.data.reviews))
@@ -27,10 +27,10 @@ useEffect(() => {
       heading: 'error getting reviews',
       message: messages.getReviewsFailure,
       variant: 'danger',
-    })
+      })
     setError(true)
-  })
-})
+    })
+}, [msgAlert])
 
   if (error) {
     return <p>Error!</p>
@@ -48,7 +48,7 @@ useEffect(() => {
         <Card.Header>{review.title}</Card.Header>
         <Card.Body>
           <Card.Text>
-            <Link to={`/reviews/${review.id}`}>View {review.title}</Link>
+            <Link to={`/reviews/${review._id}`}>View {review.title} Review</Link>
           </Card.Text>
         </Card.Body>
       </Card>

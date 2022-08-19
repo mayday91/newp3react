@@ -13,9 +13,17 @@ const ReviewForm = (props) => {
         <Form.Label htmlFor="title">Title:</Form.Label>
         <Form.Control
           placeholder="What is the album's name?"
-          name="name"
-          id="name"
+          name="title"
+          id="title"
           value={ review.title }
+          onChange={ handleChange }
+        />
+        <Form.Label htmlFor="artist">Artist:</Form.Label>
+        <Form.Control
+          placeholder="What is the artist's name?"
+          name="artist"
+          id="artist"
+          value={ review.artist }
           onChange={ handleChange }
         />
         <Form.Label htmlFor="body">Review:</Form.Label>

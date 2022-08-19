@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Form, Container, Button } from 'react-bootstrap'
 
 const CommentForm = (props) => {

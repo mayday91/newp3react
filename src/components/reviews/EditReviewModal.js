@@ -14,11 +14,6 @@ const EditReviewModal = (props) => {
 
       console.log('this is the input type', e.target.type)
 
-      if(e.target.type === 'number'){
-        // this is looking at input type and changing it from default, which is a string, into an actual number
-        updatedValue = parseInt(e.target.value)
-      }
-
       const updatedReview = {
         [updatedName]: updatedValue
       }
@@ -44,8 +39,8 @@ const EditReviewModal = (props) => {
       })
     })
     // if everything successful we need to trigger refresh for show page
-    // this is that setUpdated function in showPet component
-    // updated is in ShowPet's useEffect's dependancy array
+    // this is that setUpdated function in showReview component
+    // updated is in ShowReview's useEffect's dependancy array
     // changes to the updated boolean cause ShowPet's useEffect to run again
     .then(() => triggerRefresh())
     // if error tell user
