@@ -38,12 +38,7 @@ const EditReviewModal = (props) => {
         variant: 'success'
       })
     })
-    // if everything successful we need to trigger refresh for show page
-    // this is that setUpdated function in showReview component
-    // updated is in ShowReview's useEffect's dependancy array
-    // changes to the updated boolean cause ShowPet's useEffect to run again
     .then(() => triggerRefresh())
-    // if error tell user
       .catch(() => 
         msgAlert({
           heading: 'Oh No!',

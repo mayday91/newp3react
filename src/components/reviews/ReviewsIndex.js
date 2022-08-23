@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllReviews } from '../../api/reviews'
 import { messages } from '../shared/AutoDismissAlert/messages'
-
+import Layout from './../shared/layout'
 
 //style for our card container
 const cardContainerStyle = {
@@ -14,7 +14,16 @@ const cardContainerStyle = {
   padding: '10px'
 }
 
-// pets index should make a request to the API to get all pets and then display them 
+const reviewCard = {
+  textAlign: "center",
+  backgroundColor: "darkblue",
+  color:'grey',
+  width: '30%', 
+  margin: '10px',
+  border: '20px solid skyBlue',
+  borderRadius: '200px',
+}
+
 const ReviewsIndex = (props) => {
   const [reviews, setReviews] = useState(null)
   const [error, setError] = useState(false)
@@ -44,19 +53,23 @@ useEffect(() => {
   }
 
   const reviewCards = reviews.map(review => (
-      <Card style={{ width: '30%', margin: '10px'}} key={ review.id }>
+      <Card style={reviewCard} key={ review.id }>
         <Card.Header>{review.title}</Card.Header>
         <Card.Body>
+        {review.artist}
           <Card.Text>
-            <Link to={`/reviews/${review._id}`}>View {review.title} Review</Link>
+            <Link to={`/reviews/${review._id}`}>Read it!</Link><br></br>
+            {review.userName} wrote it ;)
           </Card.Text>
         </Card.Body>
       </Card>
     ))
   return (
+    <Layout>
       <div style={ cardContainerStyle }>
         { reviewCards }
       </div>
+    </Layout>
     )
 }
 

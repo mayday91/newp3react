@@ -2,10 +2,18 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
+import myLogo from '../../Mayday.png'
+
 const linkStyle = {
-    color: 'white',
+    color: '',
     textDecoration: 'none'
 }
+const logoNav = {
+    color: 'white',
+    textDecoration: 'none',
+		backgroundColor: 'darkgrey'
+}
+
 const authenticatedOptions = (
 	<>
 	<Nav.Item className='m-2'>
@@ -31,7 +39,6 @@ const unauthenticatedOptions = (
         <Nav.Item className='m-2'>
 		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
-				<br />
         <Nav.Item className='m-2'>
 		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
@@ -49,7 +56,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-	<Navbar bg='primary' variant='dark' expand='md'>
+	<Navbar style={logoNav} bg='dark' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
                 Mayday Media

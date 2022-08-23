@@ -12,6 +12,7 @@ import messages from '../shared/AutoDismissAlert/messages'
 import EditReviewModal from './EditReviewModal'
 import NewCommentModal from '../comments/NewCommentModal'
 import ShowComment from '../comments/ShowComment'
+import Layout from '../shared/layout'
 
 // We need to get the pet's id from the parameters
 // Then we need to make a request to the api
@@ -21,8 +22,21 @@ import ShowComment from '../comments/ShowComment'
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
-    flexFlow: 'row wrap'
+    flexFlow: 'row wrap',
+    margin: '10px',
+    padding: '20px',
+    border: '5px solid darkgrey'
 }
+
+const reviewCard = {
+    textAlign: "center",
+    backgroundColor: "black",
+    fontSize: "30px",
+    fontFamily: "Times",
+    width: "fit-content",
+    color: "skyblue"
+}
+
 
 const ShowReview = (props) => {
     const [review, setReview] = useState(null)
@@ -73,6 +87,7 @@ const ShowReview = (props) => {
         if (review.comments.length > 0) {
             commentCards = review.comments.map(comment => (
                 <ShowComment 
+                    style={reviewCard}
                     key={comment._id}
                     comment={comment}
                     review={review}
@@ -89,18 +104,18 @@ const ShowReview = (props) => {
     }
 
     return (
-        <>
-            <Container className="fluid">
-                <Card>
-                    <Card.Header>{ review.title } by { review.artist }</Card.Header>
+        <Layout>
+            <Container style={cardContainerLayout}>
+                <Card style={reviewCard}>
+                    <Card.Header>{ review.title }<br></br>{ review.artist }</Card.Header>
                     <Card.Body>
                         <Card.Text>
-                            <div><small>{ review.body }</small></div>
+                            <div><small>{ review.body }</small><br></br>by: { review.userName }</div>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
                         <Button onClick={() => setCommentModalShow(true)}
-                            className="m-2" variant="info"
+                            className="m-2" variant="dark"
                         >
                             Leave a comment on {review.title} !
                         </Button>
@@ -128,7 +143,7 @@ const ShowReview = (props) => {
                 </Card>
             </Container>
             <Container style={cardContainerLayout}>
-                {commentCards}
+                <div style={reviewCard}>{commentCards}</div>
             </Container>
             <EditReviewModal 
                 user={user}
@@ -147,7 +162,7 @@ const ShowReview = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setCommentModalShow(false)} 
             />
-        </>
+        </Layout>
     )
 }
 
