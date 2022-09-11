@@ -1,9 +1,11 @@
 import React from 'react'
 import Header from './Header'
+import './LayoutStyle.css'
+
 
 
 const Layout = props => (
-  <div >
+  <div class="layoutstyle">
 
     {props.children}
 

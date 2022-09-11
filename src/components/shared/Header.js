@@ -11,7 +11,8 @@ const linkStyle = {
 const logoNav = {
     color: 'white',
     textDecoration: 'none',
-		backgroundColor: 'darkgrey'
+		backgroundColor: 'darkgrey',
+		position: 'inherit'
 }
 
 const authenticatedOptions = (

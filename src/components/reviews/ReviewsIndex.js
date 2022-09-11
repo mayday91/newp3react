@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllReviews } from '../../api/reviews'
 import Layout from './../shared/layout'
+import './ReviewsIndex.css'
 
 //style for our card container
 const cardContainerStyle = {
@@ -15,12 +16,12 @@ const cardContainerStyle = {
 
 const reviewCard = {
   textAlign: "center",
-  backgroundColor: "darkblue",
-  color:'grey',
+  backgroundColor: "#fdb44b",
+  color:'darkGrey',
   width: '300px', 
   margin: '10px',
-  border: '20px solid skyBlue',
-  borderRadius: '200px',
+  border: '5px solid skyBlue',
+  borderRadius: '2px',
 }
 
 const ReviewsIndex = (props) => {
@@ -46,12 +47,13 @@ useEffect(() => {
 
   const reviewCards = reviews.map(review => (
       <Card style={reviewCard} key={ review.id }>
-        <Card.Header>{review.title}</Card.Header>
         <Card.Body>
+        {review.title}
+        <br></br>
         {review.artist}
           <Card.Text>
             <Link to={`/reviews/${review._id}`}>Read it!</Link><br></br>
-            {review.userName} wrote it 
+            {review.userName}
           </Card.Text>
         </Card.Body>
       </Card>
