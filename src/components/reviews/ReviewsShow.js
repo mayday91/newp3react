@@ -121,7 +121,7 @@ const ShowReview = (props) => {
                         <Button onClick={() => setCommentModalShow(true)}
                             
                         >
-                            Leave a comment on {review.title} !
+                            Leave a comment.
                         </Button>
                         {
                             review.owner && user && review.owner._id === user.id 
@@ -130,13 +130,13 @@ const ShowReview = (props) => {
                                 <Button onClick={() => setEditModalShow(true)} 
                                     
                                 >
-                                    Edit Review
+                                    Edit
                                 </Button>
                                 
                                 <Button onClick={() => removeTheReview()}
                                     
                                 >
-                                    Delete Review
+                                    Delete
                                 </Button>
                             </>
                             :
