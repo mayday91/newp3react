@@ -1,0 +1,23 @@
+.commentCard {
+  background-color: black;
+  width: 300px;
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid white;
+}
+
+.commentBody {
+  display: grid;
+}
+
+.buttons {
+  display: flex;
+  position: relative;
+  right: 70px;
+  top: 120px;
+  justify-content: center;
+  text-align: center;
+  width: 0px;
+  height: 30px;
+}

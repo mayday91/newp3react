@@ -16,7 +16,7 @@ const cardContainerStyle = {
 
 const reviewCard = {
   textAlign: "center",
-  backgroundColor: "#fdb44b",
+  backgroundColor: "white",
   color:'darkGrey',
   width: '300px', 
   margin: '10px',

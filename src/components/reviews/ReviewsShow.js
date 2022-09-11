@@ -4,7 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom'
 // useParams will allow us to see our parameters
 // useNavigate will allow us to navigate to a specific page
 
-import { Container, Card, Button } from 'react-bootstrap'
+import { Container, Card } from 'react-bootstrap'
+import Button from '@mui/material/Button'
 
 import LoadingScreen from '../shared/LoadingScreen'
 import { getOneReview, updateReview, removeReview } from '../../api/reviews'
@@ -13,6 +14,7 @@ import EditReviewModal from './EditReviewModal'
 import NewCommentModal from '../comments/NewCommentModal'
 import ShowComment from '../comments/ShowComment'
 import Layout from '../shared/layout'
+import './ReviewsShow.css'
 
 // We need to get the pet's id from the parameters
 // Then we need to make a request to the api
@@ -22,10 +24,11 @@ import Layout from '../shared/layout'
 const cardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
+    textAlign: 'center',
     flexFlow: 'row wrap',
     margin: '10px',
     padding: '20px',
-    border: '5px solid darkgrey'
+    // border: '5px solid darkgrey'
 }
 
 const reviewCard = {
@@ -87,7 +90,6 @@ const ShowReview = (props) => {
         if (review.comments.length > 0) {
             commentCards = review.comments.map(comment => (
                 <ShowComment 
-                    style={reviewCard}
                     key={comment._id}
                     comment={comment}
                     review={review}
@@ -105,6 +107,8 @@ const ShowReview = (props) => {
 
     return (
         <Layout>
+            <div class="showExpenses">
+                <div class="reviewCard">
             <Container style={cardContainerLayout}>
                 <Card style={reviewCard}>
                     <Card.Header>{ review.title }<br></br>{ review.artist }</Card.Header>
@@ -115,7 +119,7 @@ const ShowReview = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         <Button onClick={() => setCommentModalShow(true)}
-                            className="m-2" variant="dark"
+                            
                         >
                             Leave a comment on {review.title} !
                         </Button>
@@ -124,15 +128,13 @@ const ShowReview = (props) => {
                             ?
                             <>
                                 <Button onClick={() => setEditModalShow(true)} 
-                                    className="m-2" 
-                                    variant="warning"
+                                    
                                 >
                                     Edit Review
                                 </Button>
                                 
                                 <Button onClick={() => removeTheReview()}
-                                    className="m-2"
-                                    variant="danger"
+                                    
                                 >
                                     Delete Review
                                 </Button>
@@ -143,8 +145,11 @@ const ShowReview = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
-            <Container style={cardContainerLayout}>
-                <div style={reviewCard}>{commentCards}</div>
+            </div>
+            <Container >
+            
+                {commentCards}
+            
             </Container>
             <EditReviewModal 
                 user={user}
@@ -163,6 +168,7 @@ const ShowReview = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setCommentModalShow(false)} 
             />
+            </div>
         </Layout>
     )
 }

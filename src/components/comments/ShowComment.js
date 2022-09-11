@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Card, Button } from 'react-bootstrap'
+import Button from '@mui/material/Button'
 import EditCommentModal from './EditCommentModal'
 import { deleteComment } from '../../api/comments'
+import './ShowComment.css'
 
 const ShowComment = (props) => {
     // destructure some props
@@ -30,35 +31,35 @@ const ShowComment = (props) => {
 
     return (
         <>
-            <Card className="m-2">
-                <Card.Header>{comment.userName}</Card.Header>
-                <Card.Body>
-                    <small>{comment.body}</small><br/>
+            <div className="commentCard">
+                <div className="commentBody">
+                    <h4>{comment.userName}</h4>
+                    <br></br>
+                        <p>{comment.body}</p><br/>
 
-                </Card.Body>
-                <Card.Footer>
+                </div>
+                <div className='buttons'>
                     {
                         user && user.email === comment.userName
                         ?
                         <>
                             <Button 
-                                variant="warning"
                                 onClick={() => setEditModalShow(true)}
                             >
-                                Edit Comment
+                                Edit
                             </Button>
                             <Button 
                                 onClick={() => destroyComment()} 
-                                variant="danger"
                             >
-                                Delete Comment
+                                Delete
                             </Button>
                         </>
                         :
                         null
                     }
-                </Card.Footer>
-            </Card>
+                </div>
+            </div>
+            
             <EditCommentModal
                 user={user}
                 review={review}

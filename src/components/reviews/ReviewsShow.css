@@ -1,0 +1,23 @@
+.showExpenses {
+  display: flex;
+  margin: 0 ;
+  padding: 10px;
+}
+
+.reviewCard {
+  background-color: black;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.commentCard {
+  /* background-color: black; */
+  /* border: 2px solid white; */
+  /* border-radius: 5px; */
+  display: flex;
+  justify-content: center;
+  text-align: 'center';
+  flex-flow: 'row wrap';
+  margin: '10px';
+  padding: '20px';
+}
