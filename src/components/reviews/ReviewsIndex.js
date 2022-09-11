@@ -17,7 +17,7 @@ const reviewCard = {
   textAlign: "center",
   backgroundColor: "darkblue",
   color:'grey',
-  width: '30%', 
+  width: '300px', 
   margin: '10px',
   border: '20px solid skyBlue',
   borderRadius: '200px',
@@ -25,8 +25,7 @@ const reviewCard = {
 
 const ReviewsIndex = (props) => {
   const [reviews, setReviews] = useState(null)
-  const [error, setError] = useState(false)
-  const { msgAlert } = props
+  const [error] = useState(false)
   
 useEffect(() => {
   getAllReviews()
