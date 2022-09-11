@@ -39,9 +39,7 @@ const NewCommentModal = (props) => {
       })
     })
     // if everything successful we need to trigger refresh for show page
-    // this is that setUpdated function in showPet component
-    // updated is in ShowPet's useEffect's dependancy array
-    // changes to the updated boolean cause ShowPet's useEffect to run again
+    // changes to the updated boolean cause ShowReview's useEffect to run again
     .then(() => triggerRefresh())
     // if error tell user
       .catch(() => 

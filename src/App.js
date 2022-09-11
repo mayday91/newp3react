@@ -73,7 +73,7 @@ const App = () => {
 					<Route 
 					path='/reviews/:id'
 					element={ 
-					<ShowReview user={ user } msgAlert={ msgAlert }/> 
+					<ShowReview user={ user } msgAlert={ msgAlert } /> 
 					}
 				/>
 					<Route

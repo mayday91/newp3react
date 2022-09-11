@@ -129,6 +129,7 @@ const ShowReview = (props) => {
                                 >
                                     Edit Review
                                 </Button>
+                                
                                 <Button onClick={() => removeTheReview()}
                                     className="m-2"
                                     variant="danger"

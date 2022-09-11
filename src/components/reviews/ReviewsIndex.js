@@ -31,15 +31,9 @@ const ReviewsIndex = (props) => {
   
 useEffect(() => {
   getAllReviews()
-    .then(res => setReviews(res.data.reviews))
-    .catch(err => {msgAlert ({
-      heading: 'error getting reviews',
-      message: messages.getReviewsFailure,
-      variant: 'danger',
-      })
-    setError(true)
-    })
-}, [msgAlert])
+  .then(res => setReviews(res.data.reviews))
+  .catch(console.log(error))
+}, [])
 
   if (error) {
     return <p>Error!</p>
@@ -59,7 +53,7 @@ useEffect(() => {
         {review.artist}
           <Card.Text>
             <Link to={`/reviews/${review._id}`}>Read it!</Link><br></br>
-            {review.userName} wrote it ;)
+            {review.userName} wrote it 
           </Card.Text>
         </Card.Body>
       </Card>
