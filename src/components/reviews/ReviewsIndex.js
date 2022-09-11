@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-import Card from 'react-bootstrap/card'
+import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import LoadingScreen from '../shared/LoadingScreen'
 import { getAllReviews } from '../../api/reviews'
-import { messages } from '../shared/AutoDismissAlert/messages'
 import Layout from './../shared/layout'
 
 //style for our card container
