@@ -12,7 +12,7 @@
           rgba(152,68,183,1) 51%, 
           rgba(255,53,127,1) 100%
     );  
-    animation: AnimateBG 20s ease infinite;
+    animation: AnimateBG 10s ease infinite;
   }
   
   @keyframes AnimateBG { 
