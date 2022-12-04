@@ -9,9 +9,11 @@ import './ReviewsIndex.css'
 //style for our card container
 const cardContainerStyle = {
   display: 'flex',
-  flexFlow: 'row wrap',
-  justifyContent: 'center',
-  padding: '10px'
+  flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'space-around',
+  padding: '10px',
+  margin: '20px'
 }
 
 const reviewCard = {
@@ -31,7 +33,7 @@ const ReviewsIndex = (props) => {
 useEffect(() => {
   getAllReviews()
   .then(res => setReviews(res.data.reviews))
-  .catch(console.log(error))
+  .catch('error in useeffect reviews index', console.log(error))
 }, [])
 
   if (error) {
@@ -46,7 +48,7 @@ useEffect(() => {
   }
 
   const reviewCards = reviews.map(review => (
-      <Card style={reviewCard} key={ review.id }>
+      <Card style={reviewCard} key={ review._id }>
         <Card.Body>
         {review.title}
         <br></br>
@@ -60,7 +62,7 @@ useEffect(() => {
     ))
   return (
     <Layout>
-      <div style={ cardContainerStyle }>
+      <div style={cardContainerStyle} >
         { reviewCards }
       </div>
     </Layout>

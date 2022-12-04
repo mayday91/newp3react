@@ -1,7 +1,7 @@
 let apiUrl
 const apiUrls = {
     // YOU MUST CHANGE PRODUCTION URL WHEN DEPLOYING
-	production: 'https://cors-anywhere.herokuapp.com/https://musicreviews.fly.dev',
+	production: 'https://mayday-proxy.herokuapp.com/https://musicreviews.fly.dev',
 	development: 'http://localhost:8080',
 }
 

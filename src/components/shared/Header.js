@@ -12,7 +12,9 @@ const logoNav = {
     color: 'white',
     textDecoration: 'none',
 		backgroundColor: 'darkgrey',
-		position: 'inherit'
+		position: 'absolute',
+		top: '0px',
+		width: '100vw'
 }
 
 const authenticatedOptions = (
@@ -57,6 +59,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
+	<div>
 	<Navbar style={logoNav} bg='dark' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
@@ -74,6 +77,7 @@ const Header = ({ user }) => (
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
+	</div>
 )
 
 export default Header
