@@ -34,7 +34,7 @@ useEffect(() => {
   getAllReviews()
   .then(res => setReviews(res.data.reviews))
   .catch('error in useeffect reviews index', console.log(error))
-}, [])
+})
 
   if (error) {
     return <p>Error!</p>
